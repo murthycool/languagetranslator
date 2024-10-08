@@ -7,7 +7,7 @@ from vertexai.generative_models import GenerativeModel, Part
 
 # Set up the Streamlit app
 st.title("Language Translator")
-languages = ["English", "French", "Spanish", "German", "Chinese", "Japanese","Portuguese"]
+languages = ["English", "French", "Spanish", "German", "Chinese", "Japanese","Portuguese","Russian"]
 
 # Input box for text
 text_input = st.text_area("Enter text to translate:")
