@@ -16,6 +16,7 @@ text_input = st.text_area("Enter text to translate:")
 # Dropdown for language selection
 from_language = st.selectbox("From Language", languages)
 to_language = st.selectbox("To Language", languages)
+ouput_placeholder=st.empty()
 trans,summ,sent=st.columns(3)
 def translate_text(text, from_language, to_language):
     """Translates text using Gemini.
@@ -122,15 +123,16 @@ with trans:
         if text_input:
             # Translate the text
             translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
-            st.success(translated_text)
+            ouput_placeholder.write(translated_text)
         else:
             st.warning("Please enter text to translate.")
 with summ:
     if st.button("Summary"):
         if translated_text:
             # Summary of Text
+            
             summary_text = summary_text(translated_text)
-            st.success(summary_text)
+            ouput_placeholder.write(summary_text)
         else:
             st.warning("Please enter text to translate & then get the Summary")
 with sent:
@@ -138,6 +140,6 @@ with sent:
         if translated_text:
             # Translate the text
             sentiment_text=sent_text(translated_text)
-            st.success(sentiment_text)
+            ouput_placeholder.write(sentiment_text)
         else:
             st.warning("Please enter text to translate & then get the Sentiment")
