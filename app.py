@@ -53,3 +53,10 @@ if st.button("Translate"):
         st.success(translated_text)
     else:
         st.warning("Please enter text to translate.")
+if st.button("Summary"):
+    if text_input:
+        # Translate the text
+        translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
+        st.success(translated_text)
+    else:
+        st.warning("Please enter text to translate.")
