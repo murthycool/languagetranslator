@@ -7,6 +7,7 @@ from vertexai.generative_models import GenerativeModel, Part
 
 # Set up the Streamlit app
 st.title("Language Translator")
+trans,summ,sent=st.columns(3)
 languages = ["English", "French", "Spanish", "German", "Chinese", "Japanese","Portuguese","Russian"]
 
 # Input box for text
@@ -46,17 +47,27 @@ def translate_text(text, from_language, to_language):
     return translated_text
 
 # Button to trigger translation
-if st.button("Translate"):
-    if text_input:
-        # Translate the text
-        translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
-        st.success(translated_text)
-    else:
-        st.warning("Please enter text to translate.")
-if st.button("Summary"):
-    if text_input:
-        # Translate the text
-        translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
-        st.success(translated_text)
-    else:
-        st.warning("Please enter text to translate.")
+with trans:
+    if st.button("Translate"):
+        if text_input:
+            # Translate the text
+            translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
+            st.success(translated_text)
+        else:
+            st.warning("Please enter text to translate.")
+with summ:
+    if st.button("Summary"):
+        if text_input:
+            # Translate the text
+            translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
+            st.success(translated_text)
+        else:
+            st.warning("Please enter text to translate.")
+with sent:
+    if st.button("Summary"):
+        if text_input:
+            # Translate the text
+            translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
+            st.success(translated_text)
+        else:
+            st.warning("Please enter text to translate.")
