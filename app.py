@@ -116,10 +116,6 @@ def sent_text(text):
         sent_text+=response.text
     return sent_text
 translated_text = ''
-summary_text = ''
-sentiment_text=''
-
-
 # Button to trigger translation
 with trans:
     if st.button("Translate"):
