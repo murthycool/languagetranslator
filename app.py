@@ -29,7 +29,7 @@ def translate_text(text, from_language, to_language):
         str: The translated text.
     """
     vertexai.init(project="devopshcl", location="us-central1")
-    model = GenerativeModel("gemini-1.5-flash-001",)
+    model = GenerativeModel("gemini-1.5-pro-001",)
     translation_prompt = f"Translate the following text from {from_language} to {to_language}:\n{text}"
     #translation = llm(translation_prompt)
     generation_config = {
@@ -115,9 +115,9 @@ def sent_text(text):
     for response in responses:
         sent_text+=response.text
     return sent_text
-translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
-summary_text = summary_text(translated_text)
-sentiment_text=sent_text(translated_text)
+translated_text = ''
+summary_text = ''
+sentiment_text=''
 
 
 # Button to trigger translation
@@ -125,6 +125,7 @@ with trans:
     if st.button("Translate"):
         if text_input:
             # Translate the text
+            translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
             st.success(translated_text)
         else:
             st.warning("Please enter text to translate.")
@@ -132,6 +133,7 @@ with summ:
     if st.button("Summary"):
         if translated_text:
             # Summary of Text
+            summary_text = summary_text(translated_text)
             st.success(summary_text)
         else:
             st.warning("Please enter text to translate & then get the Summary")
@@ -139,6 +141,7 @@ with sent:
     if st.button("Sentiment"):
         if translated_text:
             # Translate the text
+            sentiment_text=sent_text(translated_text)
             st.success(sentiment_text)
         else:
             st.warning("Please enter text to translate & then get the Sentiment")
