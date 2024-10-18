@@ -64,7 +64,7 @@ with summ:
         else:
             st.warning("Please enter text to translate.")
 with sent:
-    if st.button("Summary"):
+    if st.button("Sentiment"):
         if text_input:
             # Translate the text
             translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
