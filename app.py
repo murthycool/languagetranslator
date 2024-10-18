@@ -116,29 +116,31 @@ def sent_text(text):
     for response in responses:
         sent_text+=response.text
     return sent_text
-global translated_text
-translated_text = ''
+#global translated_text
+#translated_text = ''
 # Button to trigger translation
 with trans:
     if st.button("Translate"):
         if text_input:
             # Translate the text
-            global translated_text
+            #global translated_text
             translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
             ouput_placeholder.write(translated_text)
         else:
             st.warning("Please enter text to translate.")
 with summ:
     if st.button("Summary"):
-        if translated_text:
+        if text_input:
             # Summary of Text
+            translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
             summary_text = summary_text(translated_text)
             ouput_placeholder.write(summary_text)
         else:
             st.warning("Please enter text to translate & then get the Summary")
 with sent:
     if st.button("Sentiment"):
-        if translated_text:
+        if text_input:
+            translated_text = translate_text(text_input, from_language.lower(), to_language.lower())
             # Translate the text
             sentiment_text=sent_text(translated_text)
             ouput_placeholder.write(sentiment_text)
