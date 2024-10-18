@@ -116,7 +116,8 @@ def sent_text(text):
     for response in responses:
         sent_text+=response.text
     return sent_text
-#translated_text = ''
+global translated_text
+translated_text = ''
 # Button to trigger translation
 with trans:
     if st.button("Translate"):
