@@ -117,7 +117,7 @@ def sent_text(text):
         sent_text+=response.text
     return sent_text
 global translated_text
-#translated_text = ''
+translated_text = ''
 # Button to trigger translation
 with trans:
     if st.button("Translate"):
@@ -132,7 +132,6 @@ with summ:
     if st.button("Summary"):
         if translated_text:
             # Summary of Text
-            
             summary_text = summary_text(translated_text)
             ouput_placeholder.write(summary_text)
         else:
